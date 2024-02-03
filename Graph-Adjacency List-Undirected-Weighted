@@ -1,0 +1,43 @@
+CREATE AND PRINT GRAPH USING ADJACENCY LIST(UNDIRECTED,WEIGHTED)
+
+def addNode(v):
+    if v in graph:
+        print(v,"is already available")
+    else:
+        graph[v]=[]
+def show():
+    for x in graph:
+        print(x,':',graph[x])
+def addEdge(node1,node2,weight):
+    if node1 not in graph:
+        print(node1,'is not available')
+    elif node2 not in graph:
+        print(node2,'is not available')
+    else:
+        temp=[]
+        temp.append(node2)
+        temp.append(weight)
+        temp1=[]
+        temp1.append(node1)
+        temp1.append(weight)
+        graph[node1].append(temp)
+        graph[node2].append(temp1)
+graph={}
+while True:
+    print()
+    print("1.addNode\n2.print\n3.addEdge\n4.exit")
+    ch=int(input())
+    if ch==1:
+        v=input()
+        addNode(v)
+    elif ch==2:
+        show()
+    elif ch==3:
+        node1=input()
+        node2=input()
+        weight=int(input())
+        addEdge(node1,node2,weight)
+    elif ch==4:
+        break
+    else:
+        print("Invalid Choice")
