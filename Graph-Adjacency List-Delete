@@ -1,0 +1,46 @@
+CREATE, PRINT AND DELETE NODE IN GRAPH USING ADJACENCY LIST(DELETE)
+
+def addNode(v):
+    if v in graph:
+        print(v,"is already available")
+    else:
+        graph[v]=[]
+def show():
+    for x in graph:
+        print(x,':',graph[x])
+def addEdge(node1,node2):
+    if node1 not in graph:
+        print(node1,'is not available')
+    elif node2 not in graph:
+        print(node2,'is not available')
+    else:
+        graph[node1].append(node2)
+        graph[node2].append(node1)
+def deleteNode(n):
+    if n in graph:
+        graph.pop(n)
+        temp=graph.n(value)
+        print(temp)
+    else:
+        print(n,"not available")
+graph={}
+while True:
+    print()
+    print("1.addNode\n2.print\n3.addEdge\n4.deleteNode\n5.exit")
+    ch=int(input())
+    if ch==1:
+        v=input()
+        addNode(v)
+    elif ch==2:
+        show()
+    elif ch==3:
+        node1=input()
+        node2=input()
+        addEdge(node1,node2)
+    elif ch==4:
+        n=input()
+        deleteNode(n)
+    elif ch==5:
+        break
+    else:
+        print("Invalid Choice")
