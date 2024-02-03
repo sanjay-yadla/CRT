@@ -1,0 +1,51 @@
+CREATE AND PRINT GRAPH USING ADJACENCY MATRIX(UNDIRECTED,WEIGHTED)
+
+def addNode(v):
+    global ncount
+    if v in nodes:
+        print(v,"already available")
+    else:
+        nodes.append(v)
+        ncount+=1
+        for x in graph:
+            x.append(0)
+        temp=[]
+        for i in range(ncount):
+            temp.append(0)
+        graph.append(temp)
+def show():
+    for i in range(ncount):
+        for j in range(ncount):
+            print(graph[i][j],end=" ")
+        print()
+def addEdge(node1,node2,weight):
+    if node1 not in nodes:
+        print(node1,'is not available')
+    elif node2 not in nodes:
+        print(node2,'is not available')
+    else:
+        i=nodes.index(node1)
+        j=nodes.index(node2)
+        graph[i][j]=weight
+        graph[j][i]=weight
+nodes=[]
+ncount=0
+graph=[]
+while True:
+    print()
+    print("1.addNode\n2.print\n3.addEdge\n4.exit")
+    ch=int(input())
+    if ch==1:
+        v=input()
+        addNode(v)
+    elif ch==2:
+        show()
+    elif ch==3:
+        node1=input()
+        node2=input()
+        weight=int(input())
+        addEdge(node1,node2,weight)
+    elif ch==4:
+        break
+    else:
+        print("Invalid Choice")
