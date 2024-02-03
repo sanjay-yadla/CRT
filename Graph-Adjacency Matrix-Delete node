@@ -1,0 +1,60 @@
+CREATE, PRINT AND DELETE NODE IN GRAPH USING ADJACNECY MATRIX
+
+def addNode(v):
+    global ncount
+    if v in nodes:
+        print(v,"already available")
+    else:
+        nodes.append(v)
+        ncount+=1
+        for x in graph:
+            x.append(0)
+        temp=[]
+        for i in range(ncount):
+            temp.append(0)
+        graph.append(temp)
+def show():
+    for i in range(ncount):
+        for j in range(ncount):
+            print(graph[i][j],end=" ")
+        print()
+def addEdge(node1,node2):
+    if node1 not in nodes:
+        print(node1,'is not available')
+    elif node2 not in nodes:
+        print(node2,'is not available')
+    else:
+        i=nodes.index(node1)
+        j=nodes.index(node2)
+        graph[i][j]=1
+        graph[j][i]=1
+def deleteNode(n):
+    global ncount
+    index=nodes.index(n)
+    ncount-=1
+    graph.pop(index)
+    for x in graph:
+        x.pop(index)
+nodes=[]
+ncount=0
+graph=[]
+while True:
+    print()
+    print("1.addNode\n2.print\n3.addEdge\n4.deleteNode\n5.exit")
+    ch=int(input())
+    if ch==1:
+        v=input()
+        addNode(v)
+    elif ch==2:
+        show()
+    elif ch==3:
+        node1=input()
+        node2=input()
+        addEdge(node1,node2)
+    elif ch==4:
+        n=input()
+        deleteNode(n)
+    elif ch==5:
+        break
+    else:
+        print("Invalid Choice")
