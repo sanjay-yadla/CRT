@@ -32,6 +32,7 @@ def deleteNode(n):
     global ncount
     index=nodes.index(n)
     ncount-=1
+    nodes.pop(index)
     graph.pop(index)
     for x in graph:
         x.pop(index)
