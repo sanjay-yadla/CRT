@@ -6,8 +6,11 @@ def addNode(v):
     else:
         graph[v]=[]
 def show():
-    for x in graph:
-        print(x,':',graph[x])
+    if graph:
+        for x in graph:
+            print(x,':',graph[x])
+    else:
+        print("No node avialable")
 def addEdge(node1,node2):
     if node1 not in graph:
         print(node1,'is not available')
@@ -19,8 +22,8 @@ def addEdge(node1,node2):
 def deleteNode(n):
     if n in graph:
         graph.pop(n)
-        temp=graph.n(value)
-        print(temp)
+        for x,y in graph.items():
+            graph[x]=[s for s in y if s!=n]
     else:
         print(n,"not available")
 graph={}
