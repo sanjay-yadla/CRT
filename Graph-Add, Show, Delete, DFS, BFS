@@ -1,0 +1,91 @@
+CREATE, PRINT, DELETE NODES IN GRAPH AND SEARCH USING DFS, BFS
+
+def addNode(v):
+    if v in graph:
+        print(v,"is already available")
+    else:
+        graph[v]=[]
+def show():
+    if graph:
+        for x in graph:
+            print(x,':',graph[x])
+    else:
+        print("Graph is Empty")
+def addEdge(node1,node2):
+    if node1 not in graph:
+        print(node1,'is not available')
+    elif node2 not in graph:
+        print(node2,'is not available')
+    elif node1 in graph[node2] and node2 in graph[node1]:
+        print("Node is already available")
+    else:
+        graph[node1].append(node2)
+        graph[node2].append(node1)
+def dfs(visit,graph,node):
+    if graph:
+        if node not in visit:
+            print(node,end=" ")
+            visit.add(node)
+            for v in graph[node]:
+                dfs(visit,graph,v)
+    else:
+        print("No Node to Search")
+def bfs(visited,graph,node):
+    if graph:
+        visited.append(node)
+        queue.append(node)
+        while queue:
+            m=queue.pop(0)
+            print(m,end=" ")
+            for v in graph:
+                if v not in visited:
+                    visited.append(v)
+                    queue.append(v)
+        visited.clear()
+    else:
+        print("No Node to Search")
+#def delete(z):
+    #id=graph.get(z)
+    #graph.pop(z)
+    #for x in id:
+        #graph[x].pop(graph[x].index(z))
+def deleteNode(n):
+    if n in graph:
+        graph.pop(n)
+        for x,y in graph.items():
+            graph[x]=[s for s in y if s!=n]
+    else:
+        print(n,"is not available")
+queue=[]
+visit=set()
+visited=[]
+graph={}
+while True:
+    print()
+    print("1.addNode\n2.print\n3.addEdge\n4.DFS\n5.BFS\n6.deleteNode\n7.exit")
+    ch=int(input())
+    if ch==1:
+        v=input()
+        addNode(v)
+    elif ch==2:
+        show()
+    elif ch==3:
+        node1=input()
+        node2=input()
+        addEdge(node1,node2)
+    elif ch==4:
+        x=input()
+        visit.clear()
+        dfs(visit,graph,x)
+    elif ch==5:
+        y=input()
+        bfs(visited,graph,y)
+    elif ch==6:
+        #z=input()
+        #delete(z)
+        n=input()
+        deleteNode(n)
+    elif ch==7:
+        break
+    else:
+        print("Invalid Choice")
