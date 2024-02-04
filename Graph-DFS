@@ -1,0 +1,20 @@
+GRAPH-DEPTH FIRST SEARCH(DFS)
+
+def dfs(visit,graph,node):
+    if graph:
+        if node not in visit:
+            print(node,end=" ")
+            visit.add(node)
+            for v in graph[node]:
+                dfs(visit,graph,v)
+    else:
+        print("Empty Graph")
+        
+visit=set()
+graph={'3':['2','4'],
+      '8':[],
+      '2':[],
+      '4':['8'],
+      '5':['3','7'],
+      '7':['8']}
+dfs(visit,graph,'5')
