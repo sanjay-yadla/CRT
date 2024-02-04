@@ -1,0 +1,25 @@
+GRAPH-BREADTH FIRST SEARCH(BFS)
+
+def bfs(visited,graph,node):
+    if graph:
+        visited.append(node)
+        queue.append(node)
+        while queue:
+            m=queue.pop(0)
+            print(m,end=" ")
+            for v in graph:
+                if v not in visited:
+                    visited.append(v)
+                    queue.append(v)
+        visited.clear()
+    else:
+        print("Empty Graph")
+queue=[]
+visited=[]
+graph={'5':['2','4'],
+      '8':[],
+      '2':[],
+      '4':['8'],
+      '3':['5','7'],
+      '7':['8']}
+bfs(visited,graph,'3')
